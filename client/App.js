@@ -8,7 +8,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="light" backgroundColor="black" />
-      <Header />
       <Main />
     </NavigationContainer>
   );

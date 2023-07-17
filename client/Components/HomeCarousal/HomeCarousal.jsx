@@ -1,31 +1,50 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import Carousel, { Pagination } from "react-native-snap-carousel";
+import { View, Image, Dimensions } from "react-native";
+import Carousel from "react-native-snap-carousel";
 
 const HomeCarousal = () => {
-  return (
-    <View style={{ position: "relative" }}>
+  const data = [
+    {
+      id: 1,
+      imageUrl:
+        "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
+    },
+    {
+      id: 2,
+      imageUrl:
+        "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xqeyzov0ipa07m6w4j0f.jpg",
+    },
+    {
+      id: 3,
+      imageUrl:
+        "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245071/sample/uiidscjbwyjqokaesitp.jpg",
+    },
+  ];
+
+  const renderItem = ({ item }) => (
+    <View style={{ width: "100%" }}>
       <Image
-        // source={require("../../assets/icon.png")}
-        source={{
-          uri: "https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",
+        style={{
+          width: "100%",
+          height: 150,
+          marginTop: 10,
         }}
-        style={{ width: "100%", height: 170 }}
+        source={{ uri: item.imageUrl }}
       />
-      <TouchableOpacity style={{ position: "absolute", top: 110, left: 10 }}>
-        <Text
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            paddingHorizontal: 30,
-            paddingVertical: 8,
-            borderColor: "black",
-            borderWidth: 1,
-          }}
-        >
-          Shop Now
-        </Text>
-      </TouchableOpacity>
+    </View>
+  );
+
+  return (
+    <View style={{ position: "relative", width: "100%" }}>
+      <Carousel
+        data={data}
+        renderItem={renderItem}
+        sliderWidth={Dimensions.get("window").width}
+        itemWidth={Dimensions.get("window").width - 40}
+        loop={true}
+        autoplay={true}
+        autoplayInterval={3000} // Set the interval as desired (3 seconds in this example)
+      />
     </View>
   );
 };

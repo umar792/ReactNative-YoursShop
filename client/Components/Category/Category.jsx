@@ -82,7 +82,7 @@ const Category = () => {
     setCategory(id);
   };
   return (
-    <View style={{ marginVertical: 20, paddingLeft: 3 }}>
+    <View style={{ marginVertical: 10, paddingLeft: 3 }}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

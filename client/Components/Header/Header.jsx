@@ -2,8 +2,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { DefaultStyleForHeader } from "../../styles/Styles";
 import { Avatar } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigate = useNavigation();
   return (
     <View style={[DefaultStyleForHeader, headerStyle.header]}>
       <TouchableOpacity>
@@ -12,7 +14,10 @@ const Header = () => {
           style={{ backgroundColor: "#F6F6F5", width: 50, height: 30 }}
         />
       </TouchableOpacity>
-      <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+      <Text
+        style={{ fontSize: 25, fontWeight: "bold" }}
+        onPress={() => navigate.navigate("home")}
+      >
         Your<Text style={{ color: "red" }}>Shop</Text>
       </Text>
     </View>
