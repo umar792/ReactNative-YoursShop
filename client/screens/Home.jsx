@@ -17,6 +17,7 @@ import BestDeal from "../Components/BestDeals/BestDeal";
 import Footer from "../Components/Footer/Footer";
 import EventDeal from "../Components/BestDeals/EventDeal";
 import FeatureProduct from "../Components/FeatureProducts/FeatureProduct";
+import DrawerNavigation from "../Components/DrawerNavigation/DrawerNavigation";
 
 const product = [
   {
@@ -102,6 +103,7 @@ const Home = () => {
         <EventDeal />
         <FeatureProduct />
       </ScrollView>
+      {/* <DrawerNavigation /> */}
 
       {/* ---------------footer  */}
       <Footer
