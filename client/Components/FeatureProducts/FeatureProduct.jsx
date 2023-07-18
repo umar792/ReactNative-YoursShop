@@ -12,6 +12,7 @@ const FeatureProduct = () => {
     <View
       style={{
         marginBottom: 50,
+        // marginBottom: 50,
       }}
     >
       <Text
