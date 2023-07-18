@@ -1,10 +1,16 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React from "react";
 import { DefaultStyleForHeader } from "../../styles/Styles";
 import { Avatar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = () => {
+const Header = ({ setSearchActive }) => {
   const navigate = useNavigation();
   return (
     <View style={[DefaultStyleForHeader, headerStyle.header]}>
@@ -14,12 +20,11 @@ const Header = () => {
           style={{ backgroundColor: "#F6F6F5", width: 50, height: 30 }}
         />
       </TouchableOpacity>
-      <Text
-        style={{ fontSize: 25, fontWeight: "bold", color: "#112A45" }}
-        onPress={() => navigate.navigate("home")}
-      >
-        Your<Text style={{ color: "#8C3333" }}>Shop</Text>
-      </Text>
+      <TouchableOpacity onPress={() => setSearchActive(false)}>
+        <Text style={{ fontSize: 25, fontWeight: "bold", color: "#112A45" }}>
+          Your<Text style={{ color: "#8C3333" }}>Shop</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

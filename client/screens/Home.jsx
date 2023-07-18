@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { DefaultStyle } from "../styles/Styles";
@@ -13,6 +14,9 @@ import SearchBox from "../Components/SearchItem/SearchBox";
 import { Avatar } from "react-native-paper";
 import Header from "../Components/Header/Header";
 import BestDeal from "../Components/BestDeals/BestDeal";
+import Footer from "../Components/Footer/Footer";
+import EventDeal from "../Components/BestDeals/EventDeal";
+import FeatureProduct from "../Components/FeatureProducts/FeatureProduct";
 
 const product = [
   {
@@ -83,25 +87,29 @@ const Home = () => {
 
   return (
     <View style={DefaultStyle}>
-      <Header />
-      {/* <TouchableOpacity style={{ zIndex: 8 }} onPress={handlePress}>
-        <Avatar.Icon
-          icon="magnify"
-          style={style.searchIcon}
-          size={50}
-          color="white"
+      <Header setSearchActive={setSearchActive} />
+      <ScrollView>
+        <HomeCarousal />
+        <Category />
+        <SearchBox
+          SearchQuery={SearchQuery}
+          setSearchQuary={setSearchQuary}
+          SerachActive={SerachActive}
+          setSearchActive={setSearchActive}
+          data={product}
         />
-      </TouchableOpacity> */}
-      <HomeCarousal />
-      <Category />
-      <SearchBox
+        <BestDeal />
+        <EventDeal />
+        <FeatureProduct />
+      </ScrollView>
+
+      {/* ---------------footer  */}
+      <Footer
         SearchQuery={SearchQuery}
         setSearchQuary={setSearchQuary}
         SerachActive={SerachActive}
         setSearchActive={setSearchActive}
-        data={product}
       />
-      <BestDeal />
     </View>
   );
 };
