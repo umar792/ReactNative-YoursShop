@@ -26,7 +26,7 @@ const FeatureProduct = () => {
       <View>
         {filterfeatureproduct &&
           filterfeatureproduct.map((item, i) => {
-            return <ColumnAllProductView item={item} i={i} />;
+            return <ColumnAllProductView item={item} i={i} key={i} />;
           })}
       </View>
     </View>

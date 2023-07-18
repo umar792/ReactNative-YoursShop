@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React from "react";
 import { Avatar, Button, Headline } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
@@ -74,9 +80,14 @@ const AllProductView = ({ data, i }) => {
           >
             ShopName : {data.owner && data.owner.shopName.slice(0, 80)}
           </Text>
-          <Text style={{ marginBottom: 5 }}>
-            {data.name && data.name.slice(0, 100)}...
-          </Text>
+          <TouchableWithoutFeedback
+            onPress={() => navigate.navigate("singleProduct", data._id)}
+          >
+            <Text style={{ marginBottom: 5 }}>
+              {data.name && data.name.slice(0, 100)}...
+            </Text>
+          </TouchableWithoutFeedback>
+
           <View
             style={{
               display: "flex",

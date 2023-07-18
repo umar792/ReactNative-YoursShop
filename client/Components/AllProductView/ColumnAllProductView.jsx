@@ -1,8 +1,10 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableWithoutFeedback } from "react-native";
 import React from "react";
 import { Button, Headline } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const ColumnAllProductView = ({ item, i }) => {
+  const navigate = useNavigation();
   return (
     <View
       style={{
@@ -32,18 +34,26 @@ const ColumnAllProductView = ({ item, i }) => {
           gap: 10,
         }}
       >
-        <Image
-          source={{
-            uri: item.images && item.images[item.images.length - 1].url,
-          }}
-          style={{
-            width: 80,
-            height: 80,
-            resizeMode: "contain",
-          }}
-        />
+        <TouchableWithoutFeedback
+          onPress={() => navigate.navigate("singleProduct", item._id)}
+        >
+          <Image
+            source={{
+              uri: item.images && item.images[item.images.length - 1].url,
+            }}
+            style={{
+              width: 80,
+              height: 80,
+              resizeMode: "contain",
+            }}
+          />
+        </TouchableWithoutFeedback>
         <View style={{ flex: 1 }}>
-          <Text>{item.name && item.name.slice(0, 100)}...</Text>
+          <TouchableWithoutFeedback
+            onPress={() => navigate.navigate("singleProduct", item._id)}
+          >
+            <Text>{item.name && item.name.slice(0, 100)}...</Text>
+          </TouchableWithoutFeedback>
           <View
             style={{
               display: "flex",

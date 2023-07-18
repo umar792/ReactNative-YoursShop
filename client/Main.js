@@ -2,6 +2,7 @@ import React from "react";
 // import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
+import SingleProduct from "./screens/SingleProduct";
 
 const Stack = createNativeStackNavigator();
 const Main = () => {
@@ -15,6 +16,7 @@ const Main = () => {
     >
       <Stack.Group>
         <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="singleProduct" component={SingleProduct} />
       </Stack.Group>
     </Stack.Navigator>
     // </NavigationContainer>
