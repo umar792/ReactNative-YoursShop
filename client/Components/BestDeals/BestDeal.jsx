@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
 import { products } from "../StaticData/StaticData";
+import AllProductView from "../AllProductView/AllProductView";
 
 const BestDeal = () => {
   const bestDealPreoduct =
@@ -14,34 +15,23 @@ const BestDeal = () => {
           fontWeight: "bold",
           letterSpacing: 1,
           fontFamily: "Roboto",
-          color: "red",
+          color: "#8C3333",
         }}
       >
-        <TouchableOpacity activeOpacity={1}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {sliceBestDeals &&
-              sliceBestDeals.map((item) => {
-                return (
-                  <View
-                    style={{
-                      backgroundColor: item % 2 === 0 ? "black" : "white",
-                    }}
-                    key={item._id}
-                  >
-                    <Image
-                      source={{
-                        uri:
-                          item.images &&
-                          item.images[item.images.length - 1].url,
-                      }}
-                      style={{ width: 150, height: 150, resizeMode: "contain" }}
-                    />
-                  </View>
-                );
-              })}
-          </ScrollView>
-        </TouchableOpacity>
+        BestDeal
       </Text>
+
+      {/* ----------------------- */}
+      <View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {
+            // map through the first ten product and display them
+            sliceBestDeals?.map((item, index) => {
+              return <AllProductView key={item._id} data={item} i={index} />;
+            })
+          }
+        </ScrollView>
+      </View>
     </View>
   );
 };

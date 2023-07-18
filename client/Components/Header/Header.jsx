@@ -15,10 +15,10 @@ const Header = () => {
         />
       </TouchableOpacity>
       <Text
-        style={{ fontSize: 25, fontWeight: "bold" }}
+        style={{ fontSize: 25, fontWeight: "bold", color: "#112A45" }}
         onPress={() => navigate.navigate("home")}
       >
-        Your<Text style={{ color: "red" }}>Shop</Text>
+        Your<Text style={{ color: "#8C3333" }}>Shop</Text>
       </Text>
     </View>
   );
