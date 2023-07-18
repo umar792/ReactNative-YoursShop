@@ -10,16 +10,16 @@ import { DefaultStyleForHeader } from "../../styles/Styles";
 import { Avatar } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ setSearchActive }) => {
+const Header = ({ setSearchActive, setDrawer }) => {
   const navigate = useNavigation();
   return (
     <View style={[DefaultStyleForHeader, headerStyle.header]}>
-      <TouchableOpacity>
+      <TouchableWithoutFeedback onPress={() => setDrawer(true)}>
         <Avatar.Icon
           icon={"menu"}
           style={{ backgroundColor: "#F6F6F5", width: 50, height: 30 }}
         />
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
       <TouchableOpacity onPress={() => setSearchActive(false)}>
         <Text style={{ fontSize: 25, fontWeight: "bold", color: "#112A45" }}>
           Your<Text style={{ color: "#8C3333" }}>Shop</Text>

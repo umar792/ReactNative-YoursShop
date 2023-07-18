@@ -96,7 +96,7 @@ const SingleProduct = () => {
   const id = router.params;
   const navigate = useNavigation();
   const goBak = () => {
-    navigate.goBack();
+    navigate.navigate("home");
     return true;
   };
 
