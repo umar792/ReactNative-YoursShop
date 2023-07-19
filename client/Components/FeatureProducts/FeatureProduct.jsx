@@ -13,12 +13,17 @@ const FeatureProduct = () => {
       style={{
         marginBottom: 50,
         // marginBottom: 50,
+        // padding: 10,
       }}
     >
       <Text
         style={{
+          fontSize: 30,
           fontWeight: "bold",
-          fontSize: 25,
+          letterSpacing: 1,
+          fontFamily: "Roboto",
+          color: "#8C3333",
+          padding: 5,
         }}
       >
         Featured Products

@@ -108,7 +108,7 @@ const AllProductView = ({ data, i }) => {
           <View>
             <Text
               style={{
-                fontSize: 18,
+                fontSize: 0,
                 marginTop: 10,
                 textAlign: "center",
               }}
@@ -128,6 +128,7 @@ const AllProductView = ({ data, i }) => {
             bottom: 0,
           }}
           textColor="white"
+          icon="cart"
         >
           Add to card
         </Button>

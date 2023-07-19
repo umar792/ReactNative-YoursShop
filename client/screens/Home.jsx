@@ -78,14 +78,8 @@ const product = [
   },
 ];
 
-const Home = () => {
-  const [SearchQuery, setSearchQuary] = useState("");
-  const [SerachActive, setSearchActive] = useState(false);
+const Home = ({ setSearchActive }) => {
   const [drawer, setDrawer] = useState(false);
-
-  const handlePress = () => {
-    setSearchActive(true);
-  };
 
   return (
     <View style={DefaultStyle}>
@@ -97,26 +91,11 @@ const Home = () => {
       <ScrollView>
         <HomeCarousal />
         <Category />
-        <SearchBox
-          SearchQuery={SearchQuery}
-          setSearchQuary={setSearchQuary}
-          SerachActive={SerachActive}
-          setSearchActive={setSearchActive}
-          data={product}
-        />
         <BestDeal />
         <EventDeal />
         <FeatureProduct />
       </ScrollView>
       <DrawerNavigation setDrawer={setDrawer} drawer={drawer} />
-
-      {/* ---------------footer  */}
-      <Footer
-        SearchQuery={SearchQuery}
-        setSearchQuary={setSearchQuary}
-        SerachActive={SerachActive}
-        setSearchActive={setSearchActive}
-      />
     </View>
   );
 };

@@ -5,7 +5,10 @@ import AllProductView from "../AllProductView/AllProductView";
 
 const BestDeal = () => {
   const bestDealPreoduct =
-    products && [...products].sort((a, b) => b.sold_out - a.sold_out);
+    products &&
+    [...products]
+      .filter((i) => i.sold_out > 0)
+      .sort((a, b) => b.sold_out - a.sold_out);
   const sliceBestDeals = bestDealPreoduct && bestDealPreoduct.slice(0, 10);
   return (
     <View style={{ paddingHorizontal: 10, marginBottom: 10 }}>
