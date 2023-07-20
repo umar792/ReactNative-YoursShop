@@ -1,4 +1,10 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import React, { useState } from "react";
 import { Avatar } from "react-native-paper";
 
@@ -83,50 +89,58 @@ const Category = () => {
   };
   return (
     <View style={{ marginVertical: 10, paddingLeft: 3 }}>
-      <ScrollView
+      <View
         horizontal
         showsHorizontalScrollIndicator={false}
         style={{ display: "flex", flexDirection: "row" }}
       >
-        {category.map((item, index) => {
-          return (
-            <TouchableOpacity
-              key={item._id}
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                padding: 5,
-                alignItems: "center",
-                marginHorizontal: 4,
-                borderRadius: 10,
-                paddingHorizontal: 10,
-                backgroundColor:
-                  selectCategory === item._id ? "gray" : "#F6F6F5",
-              }}
-              onPress={() => cliconcategory(item._id)}
-            >
-              <Text
-                style={{
-                  color: selectCategory === item._id ? "white" : "black",
-                }}
-              >
-                {item.value}
-              </Text>
-              <Avatar.Icon
-                color={selectCategory === item._id ? "white" : "black"}
-                icon={item.iconName}
-                size={30}
-                style={{
-                  marginLeft: 2,
+        {category && (
+          <FlatList
+            data={category && category}
+            renderItem={({ item, index }) => {
+              return (
+                <TouchableOpacity
+                  key={index} // Set the key to the _id of each category
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    padding: 5,
+                    alignItems: "center",
+                    marginHorizontal: 4,
+                    borderRadius: 10,
+                    paddingHorizontal: 10,
+                    backgroundColor:
+                      selectCategory === item._id ? "gray" : "#F6F6F5",
+                  }}
+                  onPress={() => cliconcategory(item._id)}
+                >
+                  <Text
+                    style={{
+                      color: selectCategory === item._id ? "white" : "black",
+                    }}
+                  >
+                    {item.value}
+                  </Text>
+                  <Avatar.Icon
+                    color={selectCategory === item._id ? "white" : "black"}
+                    icon={item.iconName}
+                    size={30}
+                    style={{
+                      marginLeft: 2,
 
-                  backgroundColor:
-                    selectCategory === item._id ? "gray" : "#F6F6F5",
-                }}
-              />
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
+                      backgroundColor:
+                        selectCategory === item._id ? "gray" : "#F6F6F5",
+                    }}
+                  />
+                </TouchableOpacity>
+              );
+            }}
+            keyExtractor={(item, index) => index} // Specify the keyExtractor to use _id as the key
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        )}
+      </View>
     </View>
   );
 };
