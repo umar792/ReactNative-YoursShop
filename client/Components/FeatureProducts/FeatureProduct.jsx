@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import { products } from "../StaticData/StaticData";
 import ColumnAllProductView from "../AllProductView/ColumnAllProductView";
@@ -29,10 +29,15 @@ const FeatureProduct = () => {
         Featured Products
       </Text>
       <View>
-        {filterfeatureproduct &&
-          filterfeatureproduct.map((item, i) => {
-            return <ColumnAllProductView item={item} i={i} key={i} />;
-          })}
+        {filterfeatureproduct && (
+          <FlatList
+            data={filterfeatureproduct && filterfeatureproduct}
+            renderItem={({ item, index }) => {
+              return <ColumnAllProductView item={item} i={index} key={index} />;
+            }}
+            keyExtractor={(item, index) => index}
+          />
+        )}
       </View>
     </View>
   );

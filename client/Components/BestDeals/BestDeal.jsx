@@ -27,7 +27,6 @@ const BestDeal = () => {
 
         {/* ----------------------- */}
         <View>
-          {/* <ScrollView horizontal showsHorizontalScrollIndicator={false}> */}
           {
             // map through the first ten product and display them
             sliceBestDeals && (
@@ -35,7 +34,9 @@ const BestDeal = () => {
                 data={sliceBestDeals && sliceBestDeals}
                 renderItem={({ item, index }) => {
                   return (
-                    <AllProductView key={item._id} data={item} i={index} />
+                    <View key={index}>
+                      <AllProductView key={item._id} data={item} i={index} />
+                    </View>
                   );
                 }}
                 keyExtractor={(item) => item._id}
@@ -44,7 +45,6 @@ const BestDeal = () => {
               />
             )
           }
-          {/* </ScrollView> */}
         </View>
       </View>
     );

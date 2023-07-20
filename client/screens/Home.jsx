@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   ScrollView,
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 import { DefaultStyle } from "../styles/Styles";
@@ -19,83 +20,28 @@ import EventDeal from "../Components/BestDeals/EventDeal";
 import FeatureProduct from "../Components/FeatureProducts/FeatureProduct";
 import DrawerNavigation from "../Components/DrawerNavigation/DrawerNavigation";
 
-const product = [
-  {
-    _id: "gdsvjxbjsbxkjsbxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "gdsvjxbjsbxkbjbxjsbxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "gdsvjxbjsbxkjswew4ebxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "gdsvjxbjsbxkj3546rgsbxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "fdfr5",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "gdsvjxbj46567687sbxkjsbxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "gdsvjxb5767jsbxkjsbxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-  {
-    _id: "gdsvjxbjs4657ytbxkjsbxkjsbx",
-    name: "BAYKA Wall Shelves for Bedroom Decor, Floating Wall Shelves for Living Room Kitchen Storage, Wall Mounted Rustic Wood Floating Shelves for Kids Books,",
-    imagesrc:
-      "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689245070/sample/xgqgzatjboclkczdt0ld.jpg",
-    price: 56,
-  },
-];
-
 const Home = ({ setSearchActive }) => {
   const [drawer, setDrawer] = useState(false);
 
   return (
     <View style={DefaultStyle}>
-      <Header
-        setSearchActive={setSearchActive}
-        setDrawer={setDrawer}
-        drawer={drawer}
+      <FlatList
+        ListHeaderComponent={
+          <>
+            <Header
+              setSearchActive={setSearchActive}
+              setDrawer={setDrawer}
+              drawer={drawer}
+            />
+            <HomeCarousal />
+            <Category />
+            <BestDeal />
+            <EventDeal />
+            <FeatureProduct />
+            <DrawerNavigation setDrawer={setDrawer} drawer={drawer} />
+          </>
+        }
       />
-      <ScrollView>
-        <HomeCarousal />
-        <Category />
-        <BestDeal />
-        <EventDeal />
-        <FeatureProduct />
-      </ScrollView>
-      <DrawerNavigation setDrawer={setDrawer} drawer={drawer} />
     </View>
   );
 };

@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import React, { useState } from "react";
 import { Avatar } from "react-native-paper";
 
@@ -89,11 +83,7 @@ const Category = () => {
   };
   return (
     <View style={{ marginVertical: 10, paddingLeft: 3 }}>
-      <View
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ display: "flex", flexDirection: "row" }}
-      >
+      <View style={{ display: "flex", flexDirection: "row" }}>
         {category && (
           <FlatList
             data={category && category}

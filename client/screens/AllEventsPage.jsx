@@ -5,17 +5,31 @@ import {
   StatusBar,
   ScrollView,
   BackHandler,
+  FlatList,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Avatar, Headline } from "react-native-paper";
 import ColumnAllProductView from "../Components/AllProductView/ColumnAllProductView";
 import { AllEvents } from "../Components/StaticData/AllEvents";
+import { useNavigation } from "@react-navigation/native";
 
 const AllEventsPage = () => {
   const AllEnentsData = AllEvents && AllEvents;
 
+  const navigate = useNavigation();
+  const goback = () => {
+    navigate.goBack();
+    return true;
+  };
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", goback);
+
+    return BackHandler.removeEventListener("hardwareBackPress", goback);
+  }, []);
+
   return (
-    <ScrollView
+    <View
       style={{
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         paddingBottom: 20,
@@ -32,12 +46,17 @@ const AllEventsPage = () => {
       </Headline>
 
       <View>
-        {AllEnentsData &&
-          AllEnentsData.map((item, index) => {
-            return <ColumnAllProductView item={item} i={index} key={index} />;
-          })}
+        {AllEnentsData && (
+          <FlatList
+            data={AllEnentsData}
+            renderItem={({ item, index }) => {
+              return <ColumnAllProductView item={item} i={index} key={index} />;
+            }}
+            keyExtractor={(item, index) => index}
+          />
+        )}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

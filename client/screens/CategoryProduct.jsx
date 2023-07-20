@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, StatusBar, BackHandler } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StatusBar,
+  BackHandler,
+  FlatList,
+} from "react-native";
 import React, { useEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { products } from "../Components/StaticData/StaticData";
@@ -26,7 +33,7 @@ const CategoryProduct = () => {
 
   return (
     <View>
-      <ScrollView
+      <View
         style={{
           paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
           paddingBottom: 20,
@@ -43,11 +50,16 @@ const CategoryProduct = () => {
         </Headline>
 
         <View>
-          {FilterTheProduct && FilterTheProduct.length > 0 ? (
-            FilterTheProduct &&
-            FilterTheProduct.map((item, index) => {
-              return <ColumnAllProductView item={item} i={index} key={index} />;
-            })
+          {FilterTheProduct && FilterTheProduct ? (
+            <FlatList
+              data={FilterTheProduct}
+              renderItem={({ item, index }) => {
+                return (
+                  <ColumnAllProductView item={item} i={index} key={index} />
+                );
+              }}
+              keyExtractor={(item, index) => index}
+            />
           ) : (
             <Text
               style={{
@@ -62,7 +74,7 @@ const CategoryProduct = () => {
             </Text>
           )}
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 };

@@ -6,7 +6,6 @@ import {
   TouchableWithoutFeedback,
   BackHandler,
   StyleSheet,
-  ScrollView,
   FlatList,
 } from "react-native";
 import React, { useEffect, useMemo } from "react";
@@ -197,7 +196,6 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
                     borderBottomColor: "gray",
                     borderBottomWidth: 1,
                   }}
-                  key={index}
                 >
                   <Avatar.Image
                     source={{ uri: item.image }}
@@ -227,7 +225,7 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
                 </View>
               );
             }}
-            keyExtractor={(item) => item._id}
+            keyExtractor={(item, index) => index}
           />
         </View>
       </>

@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { products } from "../Components/StaticData/StaticData";
 import { Avatar, Button, Headline } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import { BackHandler } from "react-native";
 
 const Cart = () => {
@@ -19,17 +19,20 @@ const Cart = () => {
 
   const navigate = useNavigation();
 
-  const backtohome = () => {
+  const goback = () => {
     navigate.goBack();
     return true;
   };
 
   useEffect(() => {
-    BackHandler.addEventListener("hardwareBackPress", backtohome);
+    BackHandler.addEventListener("hardwareBackPress", goback);
+
     return () => {
-      BackHandler.removeEventListener("hardwareBackPress", backtohome);
+      BackHandler.removeEventListener("hardwareBackPress", goback);
     };
   }, []);
+
+  const toatalPrice = 678;
 
   return (
     <View
@@ -38,7 +41,7 @@ const Cart = () => {
       }}
     >
       {cart && cart.length > 0 ? (
-        <ScrollView
+        <View
           style={{
             padding: 10,
           }}
@@ -52,7 +55,7 @@ const Cart = () => {
               marginBottom: 20,
             }}
           >
-            <TouchableOpacity onPress={backtohome}>
+            <TouchableOpacity onPress={goback}>
               <Avatar.Icon
                 icon="arrow-left-thin"
                 size={40}
@@ -72,11 +75,27 @@ const Cart = () => {
               Total Item in Card : {cart && cart.length}
             </Headline>
           </View>
-          {cart &&
-            cart.map((item, index) => {
-              return <CartItem item={item} i={index} key={item._id} />;
-            })}
-        </ScrollView>
+          <Button
+            style={{ backgroundColor: "#8C3333", marginBottom: 15 }}
+            textColor="white"
+            icon="cart"
+            onPress={() => navigate.navigate("conformOrder")}
+          >
+            Check Out{" "}
+            <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+              ${toatalPrice}
+            </Text>
+          </Button>
+          {cart && (
+            <FlatList
+              data={cart && cart}
+              renderItem={({ item, index }) => {
+                return <CartItem item={item} i={index} key={item._id} />;
+              }}
+              keyExtractor={(item, index) => index}
+            />
+          )}
+        </View>
       ) : (
         <EmptyCard />
       )}

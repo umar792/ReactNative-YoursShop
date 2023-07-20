@@ -11,11 +11,13 @@ import Footer from "./Components/Footer/Footer";
 import Cart from "./screens/Cart";
 import { useRoute } from "@react-navigation/native";
 import SearchBox from "./Components/SearchItem/SearchBox";
+import ConformOrder from "./screens/ConformOrder";
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
   const [SearchQuery, setSearchQuary] = useState("");
   const [SerachActive, setSearchActive] = useState(false);
+  const [hideFooter, setHidefooter] = useState(false);
 
   const HomeScreen = (props) => (
     <Home
@@ -26,6 +28,7 @@ const Main = () => {
       setSearchActive={setSearchActive}
     />
   );
+
   return (
     // <NavigationContainer>
     <>
@@ -44,6 +47,7 @@ const Main = () => {
           <Stack.Screen name="productcategory" component={CategoryProduct} />
           <Stack.Screen name="cartpage" component={Cart} />
           <Stack.Screen name="search" component={SearchBox} />
+          <Stack.Screen name="conformOrder" component={ConformOrder} />
         </Stack.Group>
         {/* ---------------footer  */}
       </Stack.Navigator>
