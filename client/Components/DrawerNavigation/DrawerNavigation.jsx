@@ -7,8 +7,9 @@ import {
   BackHandler,
   StyleSheet,
   ScrollView,
+  FlatList,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Button } from "react-native-paper";
 
@@ -128,105 +129,111 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
     },
   ];
 
-  return (
-    <>
-      <ScrollView
-        style={{
-          position: "absolute",
-          width: "90%",
-          height: "100%",
-          borderColor: "gray",
-          backgroundColor: "#8C3333",
-          zIndex: 99,
-          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-          transform: [{ translateX: drawer ? 0 : -400 }],
-        }}
-      >
-        <TouchableWithoutFeedback onPress={() => setDrawer(false)}>
-          <Avatar.Icon
-            icon="arrow-left-thin"
-            style={{
-              //   position: "absolute",
-              //   top: 40,
-              //   right: 10,
-              backgroundColor: "#8C3333",
-            }}
-            size={50}
-          />
-        </TouchableWithoutFeedback>
-        <Button
-          style={{
-            backgroundColor: "white",
-            borderRadius: 0,
-            borderBottomLeftRadius: 20,
-            borderBottomRightRadius: 20,
-          }}
-          textColor="black"
-        >
-          Become a Seller
-        </Button>
+  const usingMemoFunc = useMemo(() => {
+    return (
+      <>
         <View
           style={{
-            marginVertical: 10,
-            padding: 10,
+            position: "absolute",
+            width: "90%",
+            height: "100%",
+            borderColor: "gray",
+            backgroundColor: "#8C3333",
+            zIndex: 99,
+            paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+            transform: [{ translateX: drawer ? 0 : -400 }],
           }}
         >
-          <Text style={styles.text} onPress={navigatetoallproduct}>
-            All Products
-          </Text>
-          <Text style={styles.text} onPress={navigatetobestdeals}>
-            Best Deals
-          </Text>
-          <Text style={styles.text} onPress={navigatetoallEvents}>
-            Events
-          </Text>
-        </View>
-        {category &&
-          category.map((item, index) => {
-            return (
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  padding: 10,
-                  borderBottomColor: "gray",
-                  borderBottomWidth: 1,
-                }}
-                key={index}
-              >
-                <Avatar.Image
-                  source={{ uri: item.image }}
+          <TouchableWithoutFeedback onPress={() => setDrawer(false)}>
+            <Avatar.Icon
+              icon="arrow-left-thin"
+              style={{
+                //   position: "absolute",
+                //   top: 40,
+                //   right: 10,
+                backgroundColor: "#8C3333",
+              }}
+              size={50}
+            />
+          </TouchableWithoutFeedback>
+          <Button
+            style={{
+              backgroundColor: "white",
+              borderRadius: 0,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+            }}
+            textColor="black"
+          >
+            Become a Seller
+          </Button>
+          <View
+            style={{
+              marginVertical: 10,
+              padding: 10,
+            }}
+          >
+            <Text style={styles.text} onPress={navigatetoallproduct}>
+              All Products
+            </Text>
+            <Text style={styles.text} onPress={navigatetobestdeals}>
+              Best Deals
+            </Text>
+            <Text style={styles.text} onPress={navigatetoallEvents}>
+              Events
+            </Text>
+          </View>
+          <FlatList
+            data={category && category}
+            renderItem={({ item, index }) => {
+              return (
+                <View
                   style={{
-                    backgroundColor: "#8C3333",
-                    marginRight: 10,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    padding: 10,
+                    borderBottomColor: "gray",
+                    borderBottomWidth: 1,
                   }}
-                  size={40}
-                  onPress={() =>
-                    navigate.navigate("productcategory", item.value)
-                  }
-                />
-                <Text
-                  style={{
-                    padding: 3,
-                    color: "white",
-                    marginVertical: 2,
-                    fontWeight: "bold",
-                    borderBottomWidth: 0,
-                  }}
-                  onPress={() =>
-                    navigate.navigate("productcategory", item.value)
-                  }
+                  key={index}
                 >
-                  {item.value}
-                </Text>
-              </View>
-            );
-          })}
-      </ScrollView>
-    </>
-  );
+                  <Avatar.Image
+                    source={{ uri: item.image }}
+                    style={{
+                      backgroundColor: "#8C3333",
+                      marginRight: 10,
+                    }}
+                    size={40}
+                    onPress={() =>
+                      navigate.navigate("productcategory", item.value)
+                    }
+                  />
+                  <Text
+                    style={{
+                      padding: 3,
+                      color: "white",
+                      marginVertical: 2,
+                      fontWeight: "bold",
+                      borderBottomWidth: 0,
+                    }}
+                    onPress={() =>
+                      navigate.navigate("productcategory", item.value)
+                    }
+                  >
+                    {item.value}
+                  </Text>
+                </View>
+              );
+            }}
+            keyExtractor={(item) => item._id}
+          />
+        </View>
+      </>
+    );
+  }, [category]);
+  return usingMemoFunc;
 };
 
 const styles = StyleSheet.create({
