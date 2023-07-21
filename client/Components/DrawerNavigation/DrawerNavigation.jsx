@@ -134,7 +134,7 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
         <View
           style={{
             position: "absolute",
-            width: "90%",
+            width: "100%",
             height: "100%",
             borderColor: "gray",
             backgroundColor: "#8C3333",

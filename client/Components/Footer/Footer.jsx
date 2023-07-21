@@ -80,7 +80,7 @@ const Footer = ({ setSearchActive }) => {
         />
       </TouchableWithoutFeedback>
       {!isAuthanticated ? (
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => navigate.navigate("login")}>
           <Avatar.Icon
             icon="account"
             size={40}

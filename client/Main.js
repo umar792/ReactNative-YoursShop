@@ -12,6 +12,10 @@ import Cart from "./screens/Cart";
 import { useRoute } from "@react-navigation/native";
 import SearchBox from "./Components/SearchItem/SearchBox";
 import ConformOrder from "./screens/ConformOrder";
+import PaymentPage from "./screens/PaymentPage";
+import Login from "./screens/Login";
+import ForgotPasswoedPage from "./screens/ForgotPasswoedPage";
+import VerifyOtpForgotpassword from "./screens/VerifyOtpForgotpassword";
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
@@ -48,6 +52,13 @@ const Main = () => {
           <Stack.Screen name="cartpage" component={Cart} />
           <Stack.Screen name="search" component={SearchBox} />
           <Stack.Screen name="conformOrder" component={ConformOrder} />
+          <Stack.Screen name="payment" component={PaymentPage} />
+          <Stack.Screen name="login" component={Login} />
+          <Stack.Screen name="forgotpassword" component={ForgotPasswoedPage} />
+          <Stack.Screen
+            name="verifyotpforgotpassword"
+            component={VerifyOtpForgotpassword}
+          />
         </Stack.Group>
         {/* ---------------footer  */}
       </Stack.Navigator>

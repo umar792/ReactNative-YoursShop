@@ -176,6 +176,7 @@ const ConformOrder = () => {
           marginTop: 20,
         }}
         textColor="white"
+        onPress={() => navigate.navigate("payment")}
       >
         Payment
       </Button>
