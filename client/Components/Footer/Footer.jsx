@@ -5,7 +5,7 @@ import { TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const Footer = ({ setSearchActive }) => {
-  const isAuthanticated = false;
+  const isAuthanticated = true;
 
   const navigate = useNavigation();
 
@@ -91,7 +91,7 @@ const Footer = ({ setSearchActive }) => {
           />
         </TouchableWithoutFeedback>
       ) : (
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => navigate.navigate("profile")}>
           <Avatar.Image
             source={{
               uri: "https://res.cloudinary.com/dvgvcifrd/image/upload/v1689244677/sample/aiy87eq1crfos3fbiqje.jpg",

@@ -104,6 +104,7 @@ const Login = () => {
           width: "100%",
           backgroundColor: "#8C3333",
         }}
+        onPress={() => navigate.navigate("signup")}
       >
         SignUp
       </Button>
