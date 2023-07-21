@@ -60,14 +60,10 @@ const Profile = () => {
         >
           Usama@gmail.com
         </Text>
-        <Text
-          style={{
-            color: "white",
-            fontSize: 20,
-          }}
-        >
-          Usama@gmail.com
-        </Text>
+      </View>
+      {/* -------------------- */}
+      <View>
+        <Avatar.Icon icon="format-list-bulleted" style={{ margin: 10 }} />
       </View>
     </View>
   );
