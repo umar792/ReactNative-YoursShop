@@ -18,6 +18,7 @@ import ForgotPasswoedPage from "./screens/ForgotPasswoedPage";
 import VerifyOtpForgotpassword from "./screens/VerifyOtpForgotpassword";
 import SignUpScreen from "./screens/SignUpScreen";
 import Profile from "./screens/Profile";
+import ChangePassword from "./screens/ChangePassword";
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
@@ -64,6 +65,7 @@ const Main = () => {
             component={VerifyOtpForgotpassword}
           />
         </Stack.Group>
+        <Stack.Screen name="changepassword" component={ChangePassword} />
         {/* ---------------footer  */}
       </Stack.Navigator>
       <Footer

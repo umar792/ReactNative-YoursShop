@@ -1,8 +1,27 @@
-import { View, Text, Platform, StatusBar } from "react-native";
-import React from "react";
+import { View, Text, Platform, StatusBar, BackHandler } from "react-native";
+import React, { useEffect } from "react";
 import { Avatar, Headline } from "react-native-paper";
+import {
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
+  const navigate = useNavigation();
+
+  const goback = () => {
+    navigate.goBack();
+    return true;
+  };
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", goback);
+
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", goback);
+    };
+  }, []);
   return (
     <View
       style={{
@@ -62,8 +81,98 @@ const Profile = () => {
         </Text>
       </View>
       {/* -------------------- */}
-      <View>
-        <Avatar.Icon icon="format-list-bulleted" style={{ margin: 10 }} />
+      <View
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}
+      >
+        <Avatar.Icon
+          icon="format-list-bulleted"
+          style={{
+            margin: 15,
+            backgroundColor: "white",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.36,
+            shadowRadius: 6.68,
+
+            elevation: 11,
+          }}
+        />
+        <Avatar.Icon
+          icon="view-dashboard"
+          style={{
+            margin: 10,
+            backgroundColor: "white",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.36,
+            shadowRadius: 6.68,
+
+            elevation: 11,
+          }}
+        />
+        <Avatar.Icon
+          icon="account-box-multiple-outline"
+          style={{
+            margin: 10,
+            backgroundColor: "white",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.36,
+            shadowRadius: 6.68,
+
+            elevation: 11,
+          }}
+        />
+        <TouchableOpacity onPress={() => console.warn("hello")}>
+          <Avatar.Icon
+            icon="lock"
+            style={{
+              margin: 10,
+              backgroundColor: "white",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 5,
+              },
+              shadowOpacity: 0.36,
+              shadowRadius: 6.68,
+
+              elevation: 11,
+            }}
+          />
+        </TouchableOpacity>
+        <Avatar.Icon
+          icon="logout"
+          style={{
+            margin: 10,
+            backgroundColor: "white",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 5,
+            },
+            shadowOpacity: 0.36,
+            shadowRadius: 6.68,
+
+            elevation: 11,
+          }}
+        />
       </View>
     </View>
   );
