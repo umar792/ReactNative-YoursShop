@@ -5,13 +5,10 @@ import {
   StatusBar,
   TouchableWithoutFeedback,
   BackHandler,
-<<<<<<< HEAD
   Image,
   ScrollView,
-=======
   StyleSheet,
   FlatList,
->>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
 } from "react-native";
 import React, { useEffect, useMemo } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -20,8 +17,6 @@ import { Avatar, Button } from "react-native-paper";
 const DrawerNavigation = ({ drawer, setDrawer }) => {
   const navigate = useNavigation();
 
-<<<<<<< HEAD
-=======
   const navigatetoallproduct = () => {
     navigate.navigate("allproduct");
   };
@@ -45,7 +40,6 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
     };
   }, []);
 
->>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
   const category = [
     {
       id: 17,
@@ -131,49 +125,12 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
       image:
         "https://hips.hearstapps.com/hmg-prod/images/po-motorcycles-index-1586887896.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
     },
-<<<<<<< HEAD
-  ];
-
-  return (
-    <>
-      <ScrollView
-        style={{
-          position: "absolute",
-          width: "90%",
-          height: "100%",
-          borderColor: "gray",
-          backgroundColor: "#8C3333",
-          zIndex: 99,
-          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-          transform: [{ translateX: drawer ? 0 : -400 }],
-          paddingBottom: 40,
-          marginBottom: 10,
-        }}
-      >
-        <TouchableWithoutFeedback onPress={() => setDrawer(false)}>
-          <Avatar.Icon
-            icon="arrow-left-thin"
-            style={{
-              //   position: "absolute",
-              //   top: 40,
-              //   right: 10,
-              backgroundColor: "#8C3333",
-            }}
-            size={50}
-          />
-        </TouchableWithoutFeedback>
-        <Button
-=======
-    {
-      id: 14,
-    },
   ];
 
   const usingMemoFunc = useMemo(() => {
     return (
       <>
         <View
->>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
           style={{
             position: "absolute",
             width: "100%",
@@ -185,88 +142,6 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
             transform: [{ translateX: drawer ? 0 : -400 }],
           }}
         >
-<<<<<<< HEAD
-          Become a Seller
-        </Button>
-        <View
-          style={{
-            padding: 10,
-          }}
-        >
-          <Text
-            style={{
-              color: "white",
-              padding: 5,
-              fontSize: 15,
-              marginVertical: 7,
-            }}
-          >
-            Best Selling
-          </Text>
-          <Text
-            style={{
-              color: "white",
-              padding: 5,
-              fontSize: 15,
-              marginVertical: 7,
-            }}
-          >
-            All Products
-          </Text>
-          <Text
-            style={{
-              color: "white",
-              padding: 5,
-              fontSize: 15,
-              marginVertical: 7,
-            }}
-          >
-            All Events
-          </Text>
-          {/* ------------------------ */}
-          <View>
-            {category &&
-              category.map((item, index) => {
-                return (
-                  <View
-                    key={index}
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                      alignItems: "center",
-                      marginVertical: 10,
-                      borderColor: "gray",
-                      borderBottomWidth: 1,
-                      padding: 7,
-                    }}
-                  >
-                    <Avatar.Image
-                      source={{ uri: item.image }}
-                      size={40}
-                      style={{
-                        backgroundColor: "#8C3333",
-                      }}
-                    />
-                    <Text
-                      style={{
-                        color: "white",
-                        padding: 5,
-                        fontSize: 15,
-                        marginVertical: 7,
-                      }}
-                    >
-                      {item.value}
-                    </Text>
-                  </View>
-                );
-              })}
-          </View>
-        </View>
-      </ScrollView>
-    </>
-  );
-=======
           <TouchableWithoutFeedback onPress={() => setDrawer(false)}>
             <Avatar.Icon
               icon="arrow-left-thin"
@@ -356,7 +231,6 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
     );
   }, [category]);
   return usingMemoFunc;
->>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
 };
 
 const styles = StyleSheet.create({

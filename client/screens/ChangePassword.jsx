@@ -41,7 +41,7 @@ const ChangePassword = () => {
           marginTop: 50,
         }}
       >
-        Login to your account
+        Change Your Password
       </Headline>
 
       <View
@@ -67,18 +67,18 @@ const ChangePassword = () => {
           value={password}
           onChangeText={(value) => setpassword(value)}
         />
-        {/* <TouchableOpacity onPress={() => navigate.navigate("forgotpassword")}> */}
-        <Text
-          style={{
-            marginVertical: 20,
-            color: "gray",
-            textAlign: "right",
-          }}
-          onPress={() => navigate.navigate("forgotpassword")}
-        >
-          Forgot Password
-        </Text>
-        {/* </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigate.navigate("forgotpassword")}>
+          <Text
+            style={{
+              marginVertical: 20,
+              color: "gray",
+              textAlign: "right",
+            }}
+            onPress={() => navigate.navigate("forgotpassword")}
+          >
+            Forgot Password
+          </Text>
+        </TouchableOpacity>
       </View>
       <Button
         textColor="white"
@@ -87,26 +87,7 @@ const ChangePassword = () => {
           backgroundColor: "black",
         }}
       >
-        Login
-      </Button>
-      <Text
-        style={{
-          marginVertical: 20,
-          fontSize: 25,
-          color: "gray",
-        }}
-      >
-        OR
-      </Text>
-      <Button
-        textColor="white"
-        style={{
-          width: "100%",
-          backgroundColor: "#8C3333",
-        }}
-        onPress={() => navigate.navigate("signup")}
-      >
-        SignUp
+        Update
       </Button>
     </View>
   );
