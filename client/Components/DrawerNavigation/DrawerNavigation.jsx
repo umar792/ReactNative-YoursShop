@@ -5,16 +5,47 @@ import {
   StatusBar,
   TouchableWithoutFeedback,
   BackHandler,
+<<<<<<< HEAD
   Image,
   ScrollView,
+=======
+  StyleSheet,
+  FlatList,
+>>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Button } from "react-native-paper";
 
 const DrawerNavigation = ({ drawer, setDrawer }) => {
   const navigate = useNavigation();
 
+<<<<<<< HEAD
+=======
+  const navigatetoallproduct = () => {
+    navigate.navigate("allproduct");
+  };
+  const navigatetobestdeals = () => {
+    navigate.navigate("bestdeals");
+  };
+  const navigatetoallEvents = () => {
+    navigate.navigate("allevents");
+  };
+
+  const GoBack = () => {
+    setDrawer(false);
+    return true;
+  };
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", GoBack);
+
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", GoBack);
+    };
+  }, []);
+
+>>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
   const category = [
     {
       id: 17,
@@ -100,6 +131,7 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
       image:
         "https://hips.hearstapps.com/hmg-prod/images/po-motorcycles-index-1586887896.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
     },
+<<<<<<< HEAD
   ];
 
   return (
@@ -131,14 +163,29 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
           />
         </TouchableWithoutFeedback>
         <Button
+=======
+    {
+      id: 14,
+    },
+  ];
+
+  const usingMemoFunc = useMemo(() => {
+    return (
+      <>
+        <View
+>>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
           style={{
-            backgroundColor: "white",
-            borderRadius: 0,
-            borderBottomLeftRadius: 20,
-            borderBottomRightRadius: 20,
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            borderColor: "gray",
+            backgroundColor: "#8C3333",
+            zIndex: 99,
+            paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+            transform: [{ translateX: drawer ? 0 : -400 }],
           }}
-          textColor="black"
         >
+<<<<<<< HEAD
           Become a Seller
         </Button>
         <View
@@ -219,6 +266,109 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
       </ScrollView>
     </>
   );
+=======
+          <TouchableWithoutFeedback onPress={() => setDrawer(false)}>
+            <Avatar.Icon
+              icon="arrow-left-thin"
+              style={{
+                //   position: "absolute",
+                //   top: 40,
+                //   right: 10,
+                backgroundColor: "#8C3333",
+              }}
+              size={50}
+            />
+          </TouchableWithoutFeedback>
+          <Button
+            style={{
+              backgroundColor: "white",
+              borderRadius: 0,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+            }}
+            textColor="black"
+          >
+            Become a Seller
+          </Button>
+          <View
+            style={{
+              marginVertical: 10,
+              padding: 10,
+            }}
+          >
+            <Text style={styles.text} onPress={navigatetoallproduct}>
+              All Products
+            </Text>
+            <Text style={styles.text} onPress={navigatetobestdeals}>
+              Best Deals
+            </Text>
+            <Text style={styles.text} onPress={navigatetoallEvents}>
+              Events
+            </Text>
+          </View>
+          <FlatList
+            data={category && category}
+            renderItem={({ item, index }) => {
+              return (
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    padding: 10,
+                    borderBottomColor: "gray",
+                    borderBottomWidth: 1,
+                  }}
+                >
+                  <Avatar.Image
+                    source={{ uri: item.image }}
+                    style={{
+                      backgroundColor: "#8C3333",
+                      marginRight: 10,
+                    }}
+                    size={40}
+                    onPress={() =>
+                      navigate.navigate("productcategory", item.value)
+                    }
+                  />
+                  <Text
+                    style={{
+                      padding: 3,
+                      color: "white",
+                      marginVertical: 2,
+                      fontWeight: "bold",
+                      borderBottomWidth: 0,
+                    }}
+                    onPress={() =>
+                      navigate.navigate("productcategory", item.value)
+                    }
+                  >
+                    {item.value}
+                  </Text>
+                </View>
+              );
+            }}
+            keyExtractor={(item, index) => index}
+          />
+        </View>
+      </>
+    );
+  }, [category]);
+  return usingMemoFunc;
+>>>>>>> 5b4c90062c1f2216f2a639779449206c28bcfa05
 };
+
+const styles = StyleSheet.create({
+  text: {
+    padding: 10,
+    color: "white",
+    marginVertical: 7,
+    fontWeight: "bold",
+    borderBottomColor: "gray",
+    borderBottomWidth: 1,
+    paddingVertical: 5,
+  },
+});
 
 export default DrawerNavigation;

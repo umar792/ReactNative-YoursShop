@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import { AllEvents } from "../StaticData/AllEvents";
 import AllProductView from "../AllProductView/AllProductView";
@@ -29,14 +29,20 @@ const EventDeal = () => {
 
       {/* ----------------------- */}
       <View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {
-            // map through the first ten product and display them
-            sliceBestDeals?.map((item, index) => {
-              return <AllProductView key={item._id} data={item} i={index} />;
-            })
-          }
-        </ScrollView>
+        {
+          // map through the first ten product and display them
+          sliceBestDeals && (
+            <FlatList
+              data={sliceBestDeals && sliceBestDeals}
+              renderItem={({ item, index }) => {
+                return <AllProductView key={item._id} data={item} i={index} />;
+              }}
+              keyExtractor={(item, index) => index}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            />
+          )
+        }
       </View>
     </View>
   );

@@ -269,6 +269,7 @@ const SingleProduct = () => {
         </View>
         <TouchableWithoutFeedback>
           <Button
+            icon="cart"
             style={{
               width: "100%",
               backgroundColor: "white",
@@ -284,9 +285,10 @@ const SingleProduct = () => {
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback>
           <Button
+            icon="shopping"
             style={{
               width: "100%",
-              backgroundColor: "black",
+              backgroundColor: "#8C3333",
               marginTop: 5,
               borderRadius: 0,
               borderBottomLeftRadius: 20,

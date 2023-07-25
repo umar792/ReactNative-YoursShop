@@ -21,7 +21,7 @@ const CountDown = ({ startDate, endDate }) => {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
-        // seconds: Math.floor((difference / 1000) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
       };
     }
 
@@ -29,13 +29,14 @@ const CountDown = ({ startDate, endDate }) => {
   }
 
   const renderTimerComponents = Object.keys(timeLeft).map((interval) => {
-    if (!timeLeft[interval]) {
+    if (!timeLeft[interval] || interval === "seconds") {
+      // Exclude seconds from being rendered
       return null;
     }
 
     return (
       <Text key={interval} style={{ color: "#475ad2" }}>
-        {timeLeft[interval]} {interval}{" "}
+        {timeLeft[interval]} {interval}
       </Text>
     );
   });
@@ -43,9 +44,9 @@ const CountDown = ({ startDate, endDate }) => {
   return (
     <View style={{}}>
       {renderTimerComponents.length ? (
-        <Text style={{ fontSize: 16 }}>{renderTimerComponents}</Text>
+        <Text style={{ fontSize: 17 }}>{renderTimerComponents}</Text>
       ) : (
-        <Text style={{ fontSize: 15, color: "red" }}>Time's Up</Text>
+        <Text style={{ fontSize: 10, color: "red" }}>Time's Up</Text>
       )}
     </View>
   );

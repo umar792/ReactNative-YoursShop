@@ -9,19 +9,17 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, Headline, Searchbar, TextInput } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import { products } from "../StaticData/StaticData";
 
-const SearchBox = ({
-  SearchQuery,
-  setSearchQuary,
-  SerachActive,
-  setSearchActive,
-  data,
-}) => {
+const SearchBox = () => {
+  const data = products && products;
+  const navigate = useNavigation();
+  const [SearchQuery, setSearchQuary] = useState("");
   const GoBack = () => {
-    setSearchActive(false);
-    setSearchQuary("");
+    navigate.goBack();
     return true;
   };
 
@@ -35,54 +33,57 @@ const SearchBox = ({
   // onPress={() => setSearchActive(false)
   return (
     <>
-      {SerachActive && (
-        <View
-          style={{
-            ...styles.searchBox,
-            paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-          }}
-        >
-          {/* ====================================================== */}
-          <View>
-            <Searchbar
-              placeholder="Search..."
-              onChangeText={(value) => setSearchQuary(value)}
-              style={{ width: "95%", marginHorizontal: 10, marginVertical: 20 }}
-            />
-          </View>
-          {/* ---------------------- show All Data  */}
-          <ScrollView>
-            {data &&
-              data.map((item) => {
-                return (
-                  <View
-                    key={item._id}
-                    style={{
-                      backgroundColor: "white",
-                      marginVertical: 20,
-                      marginHorizontal: 5,
-                      padding: 10,
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "flex-start",
-                      flexDirection: "row",
-                      gap: 10,
-                    }}
-                  >
-                    <Image
-                      source={{ uri: item.imagesrc }}
-                      style={{ height: 80, width: 80 }}
-                    />
-                    <View>
-                      <Text>{item.name.slice(0, 70)}...</Text>
-                      <Headline>${item.price}</Headline>
-                    </View>
-                  </View>
-                );
-              })}
-          </ScrollView>
+      <View
+        style={{
+          ...styles.searchBox,
+          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        }}
+      >
+        {/* ====================================================== */}
+        <View>
+          <Searchbar
+            placeholder="Search..."
+            onChangeText={(value) => setSearchQuary(value)}
+            style={{ width: "95%", marginHorizontal: 10, marginVertical: 20 }}
+          />
         </View>
-      )}
+        {/* ---------------------- show All Data  */}
+        <ScrollView>
+          {data &&
+            data.map((item) => {
+              return (
+                <View
+                  key={item._id}
+                  style={{
+                    backgroundColor: "white",
+                    marginVertical: 20,
+                    marginHorizontal: 5,
+                    padding: 10,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    flexDirection: "row",
+                    gap: 10,
+                  }}
+                >
+                  <Image
+                    source={{
+                      uri:
+                        item &&
+                        item.images &&
+                        item.images[item.images.length - 1].url,
+                    }}
+                    style={{ height: 80, width: 80 }}
+                  />
+                  <View>
+                    <Text>{item.name.slice(0, 70)}...</Text>
+                    <Headline>${item.discountPrice}</Headline>
+                  </View>
+                </View>
+              );
+            })}
+        </ScrollView>
+      </View>
     </>
   );
 };

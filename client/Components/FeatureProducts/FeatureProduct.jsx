@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import { products } from "../StaticData/StaticData";
 import ColumnAllProductView from "../AllProductView/ColumnAllProductView";
@@ -13,21 +13,31 @@ const FeatureProduct = () => {
       style={{
         marginBottom: 50,
         // marginBottom: 50,
+        // padding: 10,
       }}
     >
       <Text
         style={{
+          fontSize: 30,
           fontWeight: "bold",
-          fontSize: 25,
+          letterSpacing: 1,
+          fontFamily: "Roboto",
+          color: "#8C3333",
+          padding: 5,
         }}
       >
         Featured Products
       </Text>
       <View>
-        {filterfeatureproduct &&
-          filterfeatureproduct.map((item, i) => {
-            return <ColumnAllProductView item={item} i={i} key={i} />;
-          })}
+        {filterfeatureproduct && (
+          <FlatList
+            data={filterfeatureproduct && filterfeatureproduct}
+            renderItem={({ item, index }) => {
+              return <ColumnAllProductView item={item} i={index} key={index} />;
+            }}
+            keyExtractor={(item, index) => index}
+          />
+        )}
       </View>
     </View>
   );
