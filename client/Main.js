@@ -19,6 +19,10 @@ import VerifyOtpForgotpassword from "./screens/VerifyOtpForgotpassword";
 import SignUpScreen from "./screens/SignUpScreen";
 import Profile from "./screens/Profile";
 import ChangePassword from "./screens/ChangePassword";
+import ShopRegisration from "./screens/ShopRegisration";
+import ShopLogin from "./screens/ShopLogin";
+import ShopPanel from "./screens/ShopPanel";
+import ShopCreateProduct from "./screens/ShopCreateProduct";
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
@@ -64,8 +68,13 @@ const Main = () => {
             name="verifyotpforgotpassword"
             component={VerifyOtpForgotpassword}
           />
+          {/* ---------------------- shop routers  */}
+          <Stack.Screen name="shopregistration" component={ShopRegisration} />
+          <Stack.Screen name="shoplogin" component={ShopLogin} />
         </Stack.Group>
         <Stack.Screen name="changepassword" component={ChangePassword} />
+        <Stack.Screen name="shoppanel" component={ShopPanel} />
+        <Stack.Screen name="shopcreateproduct" component={ShopCreateProduct} />
         {/* ---------------footer  */}
       </Stack.Navigator>
       <Footer

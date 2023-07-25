@@ -22,6 +22,12 @@ const Footer = ({ setSearchActive }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isAuthanticated) {
+      navigate.navigate("shoppanel");
+    }
+  }, []);
+
   return (
     <View
       style={{
@@ -59,7 +65,9 @@ const Footer = ({ setSearchActive }) => {
           color="white"
         />
       </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback
+        onPress={() => navigate.navigate("shopregistration")}
+      >
         <Avatar.Icon
           icon="view-dashboard"
           size={40}
