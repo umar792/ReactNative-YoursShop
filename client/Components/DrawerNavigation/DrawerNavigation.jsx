@@ -5,6 +5,8 @@ import {
   StatusBar,
   TouchableWithoutFeedback,
   BackHandler,
+  Image,
+  ScrollView,
   StyleSheet,
   FlatList,
 } from "react-native";
@@ -122,9 +124,6 @@ const DrawerNavigation = ({ drawer, setDrawer }) => {
       value: "Other",
       image:
         "https://hips.hearstapps.com/hmg-prod/images/po-motorcycles-index-1586887896.jpg?crop=1.00xw:1.00xh;0,0&resize=1200:*",
-    },
-    {
-      id: 14,
     },
   ];
 

@@ -1,10 +1,15 @@
-import { View, Text, Platform, StatusBar, BackHandler } from "react-native";
+import {
+  View,
+  Text,
+  Platform,
+  StatusBar,
+  BackHandler,
+  TouchableWithoutFeedbackBase,
+  TouchableOpacity,
+} from "react-native";
 import React, { useEffect } from "react";
 import { Avatar, Headline } from "react-native-paper";
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
+
 import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
@@ -91,22 +96,27 @@ const Profile = () => {
           flexWrap: "wrap",
         }}
       >
-        <Avatar.Icon
-          icon="format-list-bulleted"
-          style={{
-            margin: 15,
-            backgroundColor: "white",
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 5,
-            },
-            shadowOpacity: 0.36,
-            shadowRadius: 6.68,
+        <TouchableOpacity
+          onPress={() => navigate.navigate("userOrder")}
+          activeOpacity={1}
+        >
+          <Avatar.Icon
+            icon="format-list-bulleted"
+            style={{
+              margin: 15,
+              backgroundColor: "white",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 5,
+              },
+              shadowOpacity: 0.36,
+              shadowRadius: 6.68,
 
-            elevation: 11,
-          }}
-        />
+              elevation: 11,
+            }}
+          />
+        </TouchableOpacity>
         <Avatar.Icon
           icon="view-dashboard"
           style={{
@@ -123,6 +133,7 @@ const Profile = () => {
             elevation: 11,
           }}
         />
+        {/* <TouchableWithoutFeedbackBase onPress={() => console.warn("hello")}> */}
         <Avatar.Icon
           icon="account-box-multiple-outline"
           style={{
@@ -139,7 +150,12 @@ const Profile = () => {
             elevation: 11,
           }}
         />
-        <TouchableOpacity onPress={() => console.warn("hello")}>
+        {/* </TouchableWithoutFeedbackBase> */}
+
+        <TouchableOpacity
+          onPress={() => navigate.navigate("changepassword")}
+          activeOpacity={1}
+        >
           <Avatar.Icon
             icon="lock"
             style={{

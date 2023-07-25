@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import SingleProduct from "./screens/SingleProduct";
@@ -9,7 +8,6 @@ import AllEventsPage from "./screens/AllEventsPage";
 import CategoryProduct from "./screens/CategoryProduct";
 import Footer from "./Components/Footer/Footer";
 import Cart from "./screens/Cart";
-import { useRoute } from "@react-navigation/native";
 import SearchBox from "./Components/SearchItem/SearchBox";
 import ConformOrder from "./screens/ConformOrder";
 import PaymentPage from "./screens/PaymentPage";
@@ -19,16 +17,19 @@ import VerifyOtpForgotpassword from "./screens/VerifyOtpForgotpassword";
 import SignUpScreen from "./screens/SignUpScreen";
 import Profile from "./screens/Profile";
 import ChangePassword from "./screens/ChangePassword";
+<<<<<<< HEAD
 import ShopRegisration from "./screens/ShopRegisration";
 import ShopLogin from "./screens/ShopLogin";
 import ShopPanel from "./screens/ShopPanel";
 import ShopCreateProduct from "./screens/ShopCreateProduct";
+=======
+import UserOrder from "./screens/UserOrder";
+>>>>>>> 16e1bb92a809f6b09a9dfaa86a23420392971f70
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
   const [SearchQuery, setSearchQuary] = useState("");
   const [SerachActive, setSearchActive] = useState(false);
-  const [hideFooter, setHidefooter] = useState(false);
 
   const HomeScreen = (props) => (
     <Home
@@ -73,8 +74,12 @@ const Main = () => {
           <Stack.Screen name="shoplogin" component={ShopLogin} />
         </Stack.Group>
         <Stack.Screen name="changepassword" component={ChangePassword} />
+<<<<<<< HEAD
         <Stack.Screen name="shoppanel" component={ShopPanel} />
         <Stack.Screen name="shopcreateproduct" component={ShopCreateProduct} />
+=======
+        <Stack.Screen name="userOrder" component={UserOrder} />
+>>>>>>> 16e1bb92a809f6b09a9dfaa86a23420392971f70
         {/* ---------------footer  */}
       </Stack.Navigator>
       <Footer
