@@ -17,7 +17,14 @@ import VerifyOtpForgotpassword from "./screens/VerifyOtpForgotpassword";
 import SignUpScreen from "./screens/SignUpScreen";
 import Profile from "./screens/Profile";
 import ChangePassword from "./screens/ChangePassword";
+<<<<<<< HEAD
+import ShopRegisration from "./screens/ShopRegisration";
+import ShopLogin from "./screens/ShopLogin";
+import ShopPanel from "./screens/ShopPanel";
+import ShopCreateProduct from "./screens/ShopCreateProduct";
+=======
 import UserOrder from "./screens/UserOrder";
+>>>>>>> 16e1bb92a809f6b09a9dfaa86a23420392971f70
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
@@ -62,9 +69,17 @@ const Main = () => {
             name="verifyotpforgotpassword"
             component={VerifyOtpForgotpassword}
           />
+          {/* ---------------------- shop routers  */}
+          <Stack.Screen name="shopregistration" component={ShopRegisration} />
+          <Stack.Screen name="shoplogin" component={ShopLogin} />
         </Stack.Group>
         <Stack.Screen name="changepassword" component={ChangePassword} />
+<<<<<<< HEAD
+        <Stack.Screen name="shoppanel" component={ShopPanel} />
+        <Stack.Screen name="shopcreateproduct" component={ShopCreateProduct} />
+=======
         <Stack.Screen name="userOrder" component={UserOrder} />
+>>>>>>> 16e1bb92a809f6b09a9dfaa86a23420392971f70
         {/* ---------------footer  */}
       </Stack.Navigator>
       <Footer
